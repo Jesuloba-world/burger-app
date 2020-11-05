@@ -1,9 +1,10 @@
 import Aux from "../../../hoc/Aux";
+import Button from "../../UI/Button/Button";
 
 const orderSummary = (props) => {
 	const ingredientSummary = Object.keys(props.ingredients).map((igKey, i) => {
 		return (
-			<li key={igKey + i} >
+			<li key={igKey + i}>
 				<span style={{ textTransform: "capitalize" }}>{igKey}</span>:{" "}
 				{props.ingredients[igKey]}
 			</li>
@@ -15,9 +16,13 @@ const orderSummary = (props) => {
 			<h3>Your Order</h3>
 			<p>A delicious burger with the following ingredients:</p>
 			<ul>{ingredientSummary}</ul>
-            <p>Continue to Checkout?</p>
-			<button>CANCEL</button>
-			<button>CONTINUE</button>
+			<p>Continue to Checkout?</p>
+			<Button btnType={"Danger"} clicked={props.cancel}>
+				CANCEL
+			</Button>
+			<Button btnType={"Success"} clicked={props.continue}>
+				CONTINUE
+			</Button>
 		</Aux>
 	);
 };
