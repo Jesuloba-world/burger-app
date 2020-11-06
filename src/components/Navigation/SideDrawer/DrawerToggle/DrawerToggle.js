@@ -1,7 +1,13 @@
-import classes from './DrawerToggle.module.css';
+import classes from "./DrawerToggle.module.css";
 
-const drawerToggle = (props) => (
-    <div onClick={props.toggle}>MENU</div>
-);
+const drawerToggle = (props) => {
+	return (
+		<div className={classes.DrawerToggle} onClick={props.toggle}>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	);
+};
 
 export default drawerToggle;
