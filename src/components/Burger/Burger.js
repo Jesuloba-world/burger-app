@@ -1,4 +1,4 @@
-import classes from "./Burger.module.css";
+import classes from "./Burger.module.css";  
 import BurgerIngredient from "./BurgerIngredient/BurgerIngredient";
 
 const burger = (props) => {
@@ -8,7 +8,7 @@ const burger = (props) => {
 				return <BurgerIngredient key={igKey + i} type={igKey} />;
 			});
 		})
-		.reduce((arr, el) => {
+		.reduce((arr, el) => { 
 			return arr.concat(el);
 		}, []);
 
