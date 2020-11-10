@@ -8,6 +8,7 @@ const withErrorHandler = (WrappedComponent, axios) => {
 			error: null,
 		};
 
+
 		UNSAFE_componentWillMount() {
 			console.log("[withErrorHandler] componentWillMount");
 
