@@ -4,20 +4,8 @@ import ContactData from "./ContactData/ContactData";
 import { Route } from "react-router-dom";
 
 class Checkout extends Component {
-	state = {
-		ingredients: null,
-		totalPrice: 0,
-	};
-
-	checkoutCancelledHandler = () => {
-		this.props.history.goBack();
-	};
-
-	checkoutContinuedHandler = () => {
-		this.props.history.replace("/checkout/contact-data");
-	};
-
-	UNSAFE_componentWillMount() {
+	constructor(props) {
+		super(props)
 		const query = new URLSearchParams(this.props.location.search);
 		const ingredients = {};
 		let price = 0;
@@ -30,8 +18,19 @@ class Checkout extends Component {
 			}
 		}
 
-		this.setState({ ingredients: ingredients, totalPrice: price });
+		this.state = {
+			ingredients: ingredients,
+			totalPrice: price,
+		};
 	}
+
+	checkoutCancelledHandler = () => {
+		this.props.history.goBack();
+	};
+
+	checkoutContinuedHandler = () => {
+		this.props.history.replace("/checkout/contact-data");
+	};
 
 	render() {
 		return (
