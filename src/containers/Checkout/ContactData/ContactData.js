@@ -1,8 +1,9 @@
 import { Component } from "react";
+import axios from "../../../axios-orders";
 import Button from "../../../components/UI/Button/Button";
 import Spinner from "../../../components/UI/Spinner/Spinner";
 import classes from "./ContactData.module.css";
-import axios from "../../../axios-orders";
+import Input from "../../../components/UI/Input/Input";
 
 class ContactData extends Component {
 	state = {
@@ -37,8 +38,8 @@ class ContactData extends Component {
 		axios
 			.post("/order.json", order)
 			.then((response) => {
-                this.setState({ loading: false });
-                this.props.history.push('/');
+				this.setState({ loading: false });
+				this.props.history.push("/");
 			})
 			.catch((error) => {
 				this.setState({ loading: false });
@@ -49,26 +50,26 @@ class ContactData extends Component {
 	render() {
 		let form = (
 			<form>
-				<input
-					className={classes.Input}
+				<Input
+					inputtype="input"
 					type="text"
 					name="name"
 					placeholder="Your Name"
 				/>
-				<input
-					className={classes.Input}
+				<Input
+					inputtype="input"
 					type="email"
 					name="email"
 					placeholder="Your Email"
 				/>
-				<input
-					className={classes.Input}
+				<Input
+					inputtype="input"
 					type="text"
 					name="street"
 					placeholder="Street"
 				/>
-				<input
-					className={classes.Input}
+				<Input
+					inputtype="input"
 					type="text"
 					name="postal"
 					placeholder="Your Postal Code"
@@ -86,7 +87,7 @@ class ContactData extends Component {
 		return (
 			<div className={classes.ContactData}>
 				<h4>Enter your Contact Data</h4>
-                {form}
+				{form}
 			</div>
 		);
 	}
