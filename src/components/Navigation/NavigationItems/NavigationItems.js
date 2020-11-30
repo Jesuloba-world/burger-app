@@ -3,16 +3,22 @@ import NavigationItem from "./Navigationitem/NavigationItem";
 
 const navigationItems = (props) => (
 	<ul className={classes.NavigationItems}>
-		<NavigationItem link="/" exact>
+		<NavigationItem link="/" closed={props.closed} exact>
 			Burger Builder
 		</NavigationItem>
 		{props.isAuthenticated ? (
-			<NavigationItem link="/orders">Orders</NavigationItem>
+			<NavigationItem link="/orders" closed={props.closed}>
+				Orders
+			</NavigationItem>
 		) : null}
 		{!props.isAuthenticated ? (
-			<NavigationItem link="/auth">Authenticate</NavigationItem>
+			<NavigationItem link="/auth" closed={props.closed}>
+				Authenticate
+			</NavigationItem>
 		) : (
-			<NavigationItem link="/logout">Logout</NavigationItem>
+			<NavigationItem link="/logout" closed={props.closed}>
+				Logout
+			</NavigationItem>
 		)}
 	</ul>
 );
