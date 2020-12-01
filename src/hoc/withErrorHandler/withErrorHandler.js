@@ -8,10 +8,7 @@ const withErrorHandler = (WrappedComponent, axios) => {
 			error: null,
 		};
 
-
 		UNSAFE_componentWillMount() {
-			console.log("[withErrorHandler] componentWillMount");
-
 			this.reqInterceptor = axios.interceptors.request.use(
 				(req) => {
 					this.setState({ error: null });
@@ -28,26 +25,6 @@ const withErrorHandler = (WrappedComponent, axios) => {
 				}
 			);
 		}
-
-		// componentDidMount() {
-		//     console.log("[withErrorHandler] componentDidMount");
-
-		// 	axios.interceptors.request.use(
-		// 		(req) => {
-		// 			this.setState({ error: null });
-		// 			return req;
-		// 		},
-		// 		(error) => {
-		// 			this.setState({ error: error });
-		// 		}
-		// 	);
-		// 	axios.interceptors.response.use(
-		// 		(res) => res,
-		// 		(error) => {
-		// 			this.setState({ error: error });
-		// 		}
-		// 	);
-		// }
 
 		componentWillUnmount() {
 			axios.interceptors.request.eject(this.reqInterceptor);
