@@ -13,9 +13,9 @@ import authReducer from "./store/reducers/auth";
 import thunk from "redux-thunk";
 
 const composeEnhancers =
-	process.env.NODE_ENV === "development"
+	(process.env.NODE_ENV !== "production"
 		? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-		: null || compose;
+		: null) || compose;
 
 const rootReducer = combineReducers({
 	burgerBuilder: burgerBuilderReducer,
