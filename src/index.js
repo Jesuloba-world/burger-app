@@ -10,8 +10,9 @@ import { createStore, applyMiddleware, compose, combineReducers } from "redux";
 import burgerBuilderReducer from "./store/reducers/burgerBuilder";
 import orderReducer from "./store/reducers/order";
 import authReducer from "./store/reducers/auth";
+// Thunk
 import thunk from "redux-thunk";
-//saga
+// Saga
 import createSagaMiddleware from "redux-saga";
 import { watchAuth } from "./store/sagas/index";
 
