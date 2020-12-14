@@ -12,7 +12,6 @@ import axios from "../../axios-orders";
 import * as actions from "../../store/actions/index";
 
 const BurgerBuilder = (props) => {
-	const [purchasable, setPurchasable] = useState(false);
 	const [purchasing, setPurchasing] = useState(false);
 
 	const { onInitIngredients } = props;
