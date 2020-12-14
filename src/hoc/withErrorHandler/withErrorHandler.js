@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import Modal from "../../components/UI/Modal/Modal";
 import Aux from "../Aux";
 import useHttpErrorHandler from "../../hooks/http-error-handler";

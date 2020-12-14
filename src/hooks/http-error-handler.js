@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export default (axios) => {
+export default function ErrorHandler(axios) {
 	const [error, setError] = useState(null);
 
 	const reqInterceptor = axios.interceptors.request.use(
@@ -19,16 +19,18 @@ export default (axios) => {
 		}
 	);
 
+	const { request, response } = axios.interceptors;
+
 	useEffect(() => {
 		return () => {
-			axios.interceptors.request.eject(reqInterceptor);
-			axios.interceptors.response.eject(resInterceptor);
+			request.eject(reqInterceptor);
+			response.eject(resInterceptor);
 		};
-	}, [reqInterceptor, resInterceptor]);
+	}, [reqInterceptor, resInterceptor, request, response]);
 
 	const errorConfirmedHandler = () => {
 		setError(null);
 	};
 
 	return [error, errorConfirmedHandler];
-};
+}
