@@ -19,33 +19,31 @@ const App = (props) => {
 	}, [onTryAutoSignup]);
 
 	let routes = (
-		<Suspense fallback={<Spinner />}>
-			<Switch>
-				<Route path="/auth" component={Auth} />
-				<Route path="/" exact component={BurgerBuilder} />
-				<Redirect to="/" />
-			</Switch>
-		</Suspense>
+		<Switch>
+			<Route path="/auth" component={Auth} />
+			<Route path="/" exact component={BurgerBuilder} />
+			<Redirect to="/" />
+		</Switch>
 	);
 
 	if (props.isAuthenticated) {
 		routes = (
-			<Suspense fallback={<Spinner />}>
-				<Switch>
-					<Route path="/checkout" component={Checkout} />
-					<Route path="/orders" component={Orders} />
-					<Route path="/logout" component={Logout} />
-					<Route path="/auth" component={Auth} />
-					<Route path="/" exact component={BurgerBuilder} />
-					<Redirect to="/" />
-				</Switch>
-			</Suspense>
+			<Switch>
+				<Route path="/checkout" component={Checkout} />
+				<Route path="/orders" component={Orders} />
+				<Route path="/logout" component={Logout} />
+				<Route path="/auth" component={Auth} />
+				<Route path="/" exact component={BurgerBuilder} />
+				<Redirect to="/" />
+			</Switch>
 		);
 	}
 
 	return (
 		<div>
-			<Layout>{routes}</Layout>
+			<Layout>
+				<Suspense fallback={<Spinner />}>{routes}</Suspense>
+			</Layout>
 		</div>
 	);
 };
